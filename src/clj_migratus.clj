@@ -5,16 +5,16 @@
             [clojure.string :as s]))
 
 (defn- load-edn-config [path]
-  (if (.exists (io/file path))
+  (when (.exists (io/file path))
     (-> (slurp path)
         edn/read-string)))
 
 (defn- load-clj-config [path]
-  (if (.exists (io/file path))
+  (when (.exists (io/file path))
     (load-file path)))
 
 (defn- load-config-from-property []
-  (if-let [path (System/getProperty "migratus.config.path")]
+  (when-let [path (System/getProperty "migratus.config.path")]
     (let [uri (.toURI (io/resource path))
           rawPath (.getRawPath uri)]
       (cond
