@@ -7,8 +7,7 @@
 Add the following to your `deps.edn`:
 
 ```
-:aliases {:migrate {:extra-deps {com.github.paulbutcher/clj-migratus {:git/tag "v1.0.3"
-                                                                      :git/sha "46a3ac1"}}
+:aliases {:migrate {:extra-deps {com.github.venbilling/clj-migratus {:git/sha "4ecd8c1db3ae58709a0de7d551781e86fb247826"}}
                     :jvm-opts["-Dmigratus.config.path=<CLASSPATH_LOCATION>"]
                     :main-opts ["-m" "clj-migratus"]}}
 ```
