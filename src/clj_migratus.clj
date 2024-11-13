@@ -45,6 +45,15 @@
 (defn reset [config]
   (migratus/reset config))
 
+(defn create-squash [config range]
+  (migratus/create-squash config range))
+
+(defn squashing-list [config from to]
+  (migratus/squashing-list config from to))
+
+(defn squashing-between [config from-id to-id name]
+  (migratus/squash-between config from-id to-id name))
+
 (defn rollback-until-just-after [config id]
   (migratus/rollback-until-just-after config (Long/parseLong id)))
 
@@ -77,4 +86,7 @@
       "up" (up config (rest args))
       "down" (down config (rest args))
       "pending-list" (println (pending-list config))
-      "migrate-until-just-before" (migrate-until-just-before config (second args)))))
+      "migrate-until-just-before" (migrate-until-just-before config (second args))
+      "create-squash" (create-squash config (rest args))
+      "squashing-list" (squashing-list config (rest args))
+      "squashing-between" (squashing-between config (rest args)))))
